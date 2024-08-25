@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html ng-app='MenuCategoriesApp'>
+<head>
+  <meta charset="utf-8">
+  <script src="angular.min.js"></script>
+  <script src="app.js"></script>
+  <link rel="stylesheet" href="styles.css">
+  <title>Menu Categories and Search</title>
+</head>
+<body>
+  <h1>Menu Categories and Search</h1>
+
+  <div ng-controller='MenuCategoriesController as menu'>
+    <h3>List of Menu Categories</h3>
+    <ul>
+      <li ng-repeat="category in menu.categories">
+        <a href="" ng-click="menu.logMenuItems(category.short_name)">{{ category.short_name }}</a>
+        {{ category.name }}
+      </li>
+    </ul>
+
+    <h3>Search Menu Items</h3>
+    <input type="text" ng-model="menu.searchTerm" placeholder="Enter search term">
+    <button ng-click="menu.narrowDown()">Narrow It Down For Me!</button>
+
+    <h3>Found Items</h3>
+    <ul>
+      <li ng-repeat="item in menu.foundItems">
+        {{ item.name }}, {{ item.short_name }}, {{ item.description }}
+        <button ng-click="menu.removeItem($index)">Don't want this one!</button>
+      </li>
+    </ul>
+    <p ng-if="menu.foundItems.length === 0 && menu.searchTerm.trim()">Nothing found</p>
+  </div>
+</body>
+</html>

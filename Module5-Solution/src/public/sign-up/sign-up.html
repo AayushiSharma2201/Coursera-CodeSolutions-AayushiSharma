@@ -1,0 +1,48 @@
+<div class="container">
+    <h2>Sign Up for our Newsletter</h2>
+    <form name="signUpForm" ng-submit="signUpCtrl.submit()" novalidate>
+      <div class="form-group">
+        <label for="firstName">First Name:</label>
+        <input type="text" id="firstName" name="firstName" ng-model="signUpCtrl.user.firstName" required>
+        <div ng-show="signUpForm.firstName.$touched && signUpForm.firstName.$invalid">
+          <span class="error">First name is required.</span>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="lastName">Last Name:</label>
+        <input type="text" id="lastName" name="lastName" ng-model="signUpCtrl.user.lastName" required>
+        <div ng-show="signUpForm.lastName.$touched && signUpForm.lastName.$invalid">
+          <span class="error">Last name is required.</span>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" ng-model="signUpCtrl.user.email" required>
+        <div ng-show="signUpForm.email.$touched && signUpForm.email.$invalid">
+          <span class="error">Valid email is required.</span>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="phone">Phone:</label>
+        <input type="tel" id="phone" name="phone" ng-model="signUpCtrl.user.phone" required>
+        <div ng-show="signUpForm.phone.$touched && signUpForm.phone.$invalid">
+          <span class="error">Phone number is required.</span>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="favoriteMenuNumber">Favorite Menu Number:</label>
+        <input type="text" id="favoriteMenuNumber" name="favoriteMenuNumber" ng-model="signUpCtrl.user.favoriteMenuNumber" required>
+        <div ng-show="signUpForm.favoriteMenuNumber.$touched && signUpForm.favoriteMenuNumber.$invalid">
+          <span class="error">Menu number is required.</span>
+        </div>
+        <div ng-if="signUpCtrl.errorMessage" class="error">
+          {{ signUpCtrl.errorMessage }}
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary" ng-disabled="signUpForm.$invalid">Submit</button>
+      <div ng-if="signUpCtrl.successMessage" class="success">
+        {{ signUpCtrl.successMessage }}
+      </div>
+    </form>
+  </div>
+  
